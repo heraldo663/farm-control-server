@@ -1,0 +1,11 @@
+
+### Create a Terrain
+
+POST http://127.0.0.1:4001/api/v1/farm/terrain HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc1ZGJhMGU3LTE3MGUtNDg2ZC04Yzk3LTk3ZTM1MmE5MTk4ZSIsImVtYWlsIjoidGVzdEB0ZXN0ZS5jb20iLCJpYXQiOjE2MjM2MDIyODksImV4cCI6MTYyMzY4ODY4OX0.ga1Ws1dx2_xVZTQcVH4ACDpl7smt95LNgdOdr1yD_MU
+
+{
+    "name": "abe",
+    "type": "sítio"
+}

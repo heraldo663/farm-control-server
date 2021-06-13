@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  name          String?
+  Terrain       Terrain[]
+  password_hash String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Terrain {
+  id        String   @id @default(uuid())
+  name      String
+  type      String
+  longitude Float?
+  latitude  Float?
+  Animal    Animal[]
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Animal {
+  id           String    @id @default(uuid())
+  name         String?
+  code         String
+  race         String
+  age          DateTime?
+  weight_value Int
+  weight_unit  String
+  terrain      Terrain   @relation(fields: [terrainId], references: [id])
+  terrainId    String
+  media        Media[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model Media {
+  id        String   @id @default(uuid())
+  url       String
+  mimetype  String
+  filename  String
+  encoding  String
+  size      Int
+  Animal    Animal?  @relation(fields: [animalId], references: [id])
+  animalId  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

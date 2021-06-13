@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  app:
+    build: .
+    container_name: ts-base
+    ports:
+      - 4000:4000
+    volumes:
+      - .:/usr/app
+
+  database_pg:
+    image: postgres:12
+    container_name: ts-base-db
+    restart: never
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=ts-base
+    volumes:
+      - pgdata:/data/postgres

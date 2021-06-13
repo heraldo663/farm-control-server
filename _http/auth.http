@@ -1,0 +1,20 @@
+### sign-up
+
+POST http://127.0.0.1:4001/api/v1/sign-up HTTP/1.1
+content-type: application/json
+
+{
+    "name": "sample",
+    "email": "tesr@testea.com",
+    "password": "123456"
+}
+
+### sign-in
+
+POST http://127.0.0.1:4001/api/v1/sign-in HTTP/1.1
+content-type: application/json
+
+{
+    "email": "tesr@testea.com",
+    "password": "123456"
+}
